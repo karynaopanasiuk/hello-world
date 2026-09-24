@@ -15,12 +15,12 @@ Grow and maintain this project's component library on an ongoing basis: build ne
 ## Peer agents
 - **`component-builder`** — builds new Tailwind-styled components with their Storybook stories and MDX docs
 - **`storybook-publisher`** — builds the static Storybook and publishes it to GitHub Pages, only after the user confirms
+- **`code-reviewer`** — read-only review of changed code against `CLAUDE.md` and TypeScript correctness
+- **`page-composer`** — composes pages out of existing components
 
 ## Planned peers (not created yet)
 These roles are not defined. If a subtask needs one, the lead flags it to the user instead of inventing it.
-- `code-reviewer` — read-only review of changed code against `CLAUDE.md` and TypeScript correctness
 - `component-tester` — writes and runs component tests (no test tooling in the repo yet)
-- `page-composer` — builds pages out of existing components
 
 ## Shared task list location
 `.claude/tasks/design-system.md`
