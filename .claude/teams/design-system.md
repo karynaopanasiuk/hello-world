@@ -14,6 +14,7 @@ Grow and maintain this project's component library on an ongoing basis: build ne
 
 ## Peer agents
 - **`component-builder`** — builds new Tailwind-styled components with their Storybook stories and MDX docs
+- **`storybook-publisher`** — builds the static Storybook and publishes it to GitHub Pages, only after the user confirms
 
 ## Planned peers (not created yet)
 These roles are not defined. If a subtask needs one, the lead flags it to the user instead of inventing it.
@@ -28,4 +29,5 @@ These roles are not defined. If a subtask needs one, the lead flags it to the us
 1. Lead reads the goal and `.claude/tasks/design-system.md`, breaks it into subtasks assigned to specific peers.
 2. The calling session runs each peer agent for its assigned subtask.
 3. Lead checks the result against the subtask's acceptance criteria (component, story, MDX, `npx tsc --noEmit` and `npm run build-storybook` passing), then updates the task list and reports progress.
-4. Finished work is merged into `main` via the normal feature-branch + PR flow — this team does not bypass that process.
+4. When the user asks to share the current Storybook, run `storybook-publisher` for a fresh build and publish; it checks Pages first and asks before setting anything up.
+5. Finished work is merged into `main` via the normal feature-branch + PR flow — this team does not bypass that process.
