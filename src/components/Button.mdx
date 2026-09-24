@@ -1,0 +1,22 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as ButtonStories from "./Button.stories";
+
+<Meta of={ButtonStories} />
+
+# Button
+
+A native `<button>` with three visual variants. It forwards its `ref`, defaults to
+`type="button"` so it never submits a form by accident, and accepts every standard
+button attribute plus an extra `className`.
+
+## Variants
+
+- **Primary** — solid purple, the main action on a screen.
+- **Secondary** — white with a border, for supporting actions.
+- **Ghost** — transparent, for low-emphasis actions.
+
+<Canvas of={ButtonStories.Primary} />
+
+## Props
+
+<Controls of={ButtonStories.Primary} />
