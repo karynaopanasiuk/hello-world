@@ -15,7 +15,7 @@ const base =
 // Full class names are written out so Tailwind's scanner can detect them.
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-indigo-600 text-white hover:bg-indigo-700 active:bg-indigo-800 focus-visible:ring-indigo-600",
+    "bg-purple-600 text-white hover:bg-purple-700 active:bg-purple-800 focus-visible:ring-purple-600",
   secondary:
     "border border-gray-300 bg-white text-gray-900 hover:bg-gray-50 active:bg-gray-100 focus-visible:ring-gray-400",
   ghost:
