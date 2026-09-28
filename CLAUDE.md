@@ -41,8 +41,9 @@ scripts/figma-to-tokens.mjs     Figma -> tokens.json (through the figmosha bridg
   MDX page; MDX imports come from `@storybook/addon-docs/blocks`.
 - **Tailwind:** utility classes only, no custom CSS or inline `style`. Write full class names
   (no `` `bg-${color}-600` ``) so the scanner sees them. Arbitrary values are fine.
-- **Palette:** `Button` and the card page use purple (`purple-600`). `Notification` follows
-  the Figma design system (blue `#1b68fa`), so the two differ.
+- **Palette:** blue, from the Figma design system: `#1b68fa` primary, `#155be0` hover,
+  `#104bc2` active, `#1b68fa` at 10% for light fills (`tokens.json` `color.primary.*`). Used in
+  `Button`, `Notification` and the card page as arbitrary values until the token CSS is wired in.
 - **Comments:** `index.html` keeps Ukrainian comments explaining the Tailwind classes;
   README and `.tsx` comments are English.
 - **Tokens are generated.** Never edit `tokens.json` or `src/styles/*` by hand: change the

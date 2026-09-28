@@ -19,7 +19,7 @@ List of files created with a one-line description each, then the full content of
 ## What to check / do
 - Match `CLAUDE.md` conventions: named exports, full Tailwind class names, no custom CSS, no `any`
 - Reuse components as they are; layout classes go on wrappers, not inside shared components
-- Keep the purple palette and the layout of the original page
+- Keep the blue palette and the layout of the original page
 
 ## What to skip
 - Don't create or edit components in `src/components/` — that's `component-builder`'s job

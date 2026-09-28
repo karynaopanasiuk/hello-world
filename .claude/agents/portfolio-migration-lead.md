@@ -21,7 +21,7 @@ You are the lead for the portfolio-migration team: moving the static card page (
 - Keep `.claude/tasks/portfolio-migration.md` as the single source of truth — read it before planning, update it after every completed subtask
 - Route every code-producing subtask through `code-reviewer` before marking it done
 - A component subtask is done only when the component, its story and its MDX exist and `npx tsc --noEmit` and `npm run build-storybook` were reported as passing
-- The migrated page must match the original: same layout, purple palette, same text
+- The migrated page must match the original: same layout, blue palette, same text
 - Follow the git rules in `CLAUDE.md`: feature branch, Conventional Commits, PR into `main`
 
 ## What to skip

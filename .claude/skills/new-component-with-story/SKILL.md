@@ -44,7 +44,7 @@ new file, then a checklist: types ✓ / story build ✓ / MDX renders ✓ (or "n
   (e.g. `type="button"`), `className` passthrough
 - Two-space indent, double quotes, semicolons, trailing commas
 - Conventional Commits for the commit, `feature/<name>` branch, PR into `main`
-- Colors from the project palette (purple, as on the card page) — check `Button.tsx`
+- Colors from the project palette (blue `#1b68fa` from the design system, as on the card page) — check `Button.tsx`
   before picking new ones
 
 ## Don't
