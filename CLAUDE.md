@@ -1,4 +1,4 @@
-# hello-world
+# karyna-design-engineer
 
 Portfolio repo of Karyna Opanasiuk (UX/UI designer): a static Tailwind card page
 (`index.html`) plus a small React/TypeScript component library documented in Storybook,
