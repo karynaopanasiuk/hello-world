@@ -6,7 +6,9 @@
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "tokens": "style-dictionary build --config style-dictionary.config.json"
+    "tokens": "style-dictionary build --config style-dictionary.config.mjs",
+    "tokens:pull": "node scripts/figma-to-tokens.mjs",
+    "tokens:sync": "npm run tokens:pull && npm run tokens"
   },
   "dependencies": {
     "react": "^19.3.0",
