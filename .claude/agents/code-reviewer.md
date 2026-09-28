@@ -18,7 +18,7 @@ A list of findings, each with severity (**blocker** / **should-fix** / **nit**),
 
 ## What to check / do
 - Conventions from `CLAUDE.md`: named exports, `forwardRef` where a native element is wrapped, props extend native attributes, variant union + `Record` map
-- Tailwind: full class names (no dynamic `` `bg-${x}` ``), no custom CSS or inline `style`, purple palette
+- Tailwind: full class names (no dynamic `` `bg-${x}` ``), no custom CSS or inline `style`, blue palette (`#1b68fa` primary)
 - TypeScript: no `any`, `import type` for type-only imports, strict-mode clean
 - Each component has a story and an MDX page; text in `index.html`-derived pages is unchanged
 - Accessibility basics: semantic elements, focus-visible and disabled states, `alt` text on images

@@ -18,7 +18,7 @@ List of files created with a one-line description each, then the full content of
 
 ## What to check / do
 - Match `CLAUDE.md` and `Button.tsx`: two-space indent, double quotes, semicolons, trailing commas
-- Use the purple palette (`purple-600` as primary) unless told otherwise
+- Use the blue design-system palette (`#1b68fa` primary, `#155be0` hover, `#104bc2` active; see `tokens.json`) unless told otherwise
 - Keep components composable and unopinionated about layout (no fixed widths or positioning baked in)
 - Give interactive elements hover, focus-visible and disabled states
 
