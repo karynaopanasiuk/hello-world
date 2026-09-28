@@ -1,0 +1,31 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as NotificationStories from "./Notification.stories";
+
+<Meta of={NotificationStories} />
+
+# Notification
+
+An inline message with an icon, a title and optional actions. Built from the
+"Notification" component in the Figma design system: four types (`info`, `success`,
+`warning`, `error`) in two sizes.
+
+## Sizes
+
+- **`xs`** — one line: icon, title, an outlined action and a dismiss button.
+- **`sm`** — icon, title, a description (about two lines), a light secondary action and a
+  filled primary action, and a dismiss button.
+
+Errors and warnings use `role="alert"`; info and success use `role="status"`. The dismiss
+button appears only when `onDismiss` is passed.
+
+## Detailed (`sm`)
+
+<Canvas of={NotificationStories.Detailed} />
+
+## Compact (`xs`)
+
+<Canvas of={NotificationStories.Compact} />
+
+## Props
+
+<Controls of={NotificationStories.Playground} />
