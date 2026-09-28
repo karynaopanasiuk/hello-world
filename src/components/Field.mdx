@@ -1,0 +1,47 @@
+import { Meta, Canvas, Controls } from "@storybook/addon-docs/blocks";
+import * as FieldStories from "./Field.stories";
+
+<Meta of={FieldStories} />
+
+# Field
+
+A set of small components for building form fields: a label, a control, a description
+and an error message, laid out together. Ported from
+[shadcn/ui's Field](https://github.com/shadcn-ui/ui/blob/main/apps/v4/registry/new-york-v4/ui/field.tsx)
+and rebuilt with plain Tailwind classes (no `cva`, no Radix `Label`) to match this
+project's conventions.
+
+## Pieces
+
+- **`Field`** — groups one label/control/description/error set. `orientation` is
+  `vertical` (default), `horizontal`, or `responsive` (vertical on narrow containers,
+  horizontal from `@md`).
+- **`FieldLabel`** — a native `<label>`; pass `htmlFor` to associate it with the control.
+- **`FieldDescription`** — helper text under the label or control.
+- **`FieldError`** — a validation message (`role="alert"`); pass `children`, or `errors`
+  from a form library (deduplicates messages, renders a list if there's more than one).
+- **`FieldContent`** — wraps label + description on the label side of a horizontal Field.
+- **`FieldGroup`** — vertical stack of Fields/FieldSets with consistent spacing.
+- **`FieldSet`** / **`FieldLegend`** — groups related Fields under a legend.
+- **`FieldTitle`** — like `FieldLabel` but not an actual `<label>`.
+- **`FieldSeparator`** — a labelled or unlabelled divider, e.g. "or".
+
+## Vertical
+
+<Canvas of={FieldStories.Vertical} />
+
+## Horizontal
+
+<Canvas of={FieldStories.Horizontal} />
+
+## With an error
+
+<Canvas of={FieldStories.WithError} />
+
+## Grouped in a form
+
+<Canvas of={FieldStories.Group} />
+
+## Props (Field)
+
+<Controls of={FieldStories.Vertical} />
