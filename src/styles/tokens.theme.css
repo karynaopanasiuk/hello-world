@@ -3,11 +3,22 @@
  */
 
 @theme {
-  --color-text-default: #21242e; /** Body text */
-  --color-text-theme: #1b68fa; /** Accent text and links */
-  --color-border-default: #d4dced; /** Default 1px borders */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 12px;
-  --spacing-lg: 16px;
+  --color-gray-100: #f3f5f7; /** Figma: color/gray/100 */
+  --color-gray-300: #8d9097; /** Figma: color/gray/300 */
+  --color-text-default: #21242e; /** Figma: Text/default */
+  --color-text-theme: #1b68fa; /** Figma: Text/theme. UNRESOLVED: get_variable_defs returned #707996 on the frame and #1b68fa on a variant; #1b68fa is what the design renders. */
+  --color-background-default: #ffffff; /** Figma: Background/default */
+  --color-background-theme-filled: #1b68fa; /** Figma: Background/theme-filled. UNRESOLVED: get_variable_defs returned #00b85c, but the design renders #1b68fa. */
+  --color-background-theme-light: rgba(27, 104, 250, 0.10196078431372549); /** Figma: Background/theme-light */
+  --color-border-default: #d4dced; /** Figma: Border/default */
+  --color-neutral-white: #ffffff; /** Figma: Neutral/white */
+  --spacing-2: 8px; /** Figma: Spacing/2 */
+  --spacing-2xl: 24px; /** Figma: Spacing/2XL */
+  --radius-sm: 6px; /** Figma: Radius/SM */
+  --radius-lg: 10px; /** Figma: Radius/LG */
+  --stroke-sm: 1px; /** Figma: Stroke/SM */
+  --shadow-xs: 0px 8px 46px -4px #6f6d7826; /** Figma: Shadow/XS */
+  --typography-body-sm-medium: 500 14px/1.4 'Inter Variable'; /** Figma: Body/14 px/SM Medium */
+  --typography-body-sm-regular: 400 14px/1.4 'Inter Variable'; /** Figma: Body/14 px/SM Regular */
+  --typography-body-xs-semibold: 600 12px/1.4 'Inter Variable'; /** Figma: Body/12 px/XS SemiBold */
 }
