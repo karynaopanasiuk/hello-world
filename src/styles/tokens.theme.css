@@ -1,0 +1,13 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+@theme {
+  --color-text-default: #21242e; /** Body text */
+  --color-text-theme: #1b68fa; /** Accent text and links */
+  --color-border-default: #d4dced; /** Default 1px borders */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+}
