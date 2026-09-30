@@ -3,94 +3,382 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Karyna Opanasiuk — Designer</title>
+    <title>Апартаменти з терасою біля озера — Буковель</title>
+    <meta name="description" content="Світлі апартаменти на двох з терасою та видом на гори, 10 хвилин пішки до підйомників Буковеля." />
+
+    <!-- Шрифти: Newsreader (заголовки, редакційний serif) і Geist (текст та інтерфейс) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Tailwind CSS підключається через CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Власна тема Tailwind: один основний колір (синій з дизайн-системи) і нейтральні відтінки
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { DEFAULT: "#1b68fa", hover: "#155be0", soft: "#eef3ff" }, // основний колір
+              ink: "#21242e", // основний текст (не чисто чорний)
+              muted: "#6b7185", // другорядний текст
+              line: "#e6e8ee", // тонкі рамки та роздільники
+              canvas: "#fafafb", // світлий фон секцій
+            },
+            fontFamily: {
+              sans: ["Geist", "Helvetica Neue", "Arial", "sans-serif"],
+              serif: ["Newsreader", "Georgia", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Плавна поява блоків під час прокрутки (додається клас .is-visible через JS) */
+      .reveal { opacity: 0; transform: translateY(12px); transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1); }
+      .reveal.is-visible { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+      /* Прибираємо стандартний трикутник у <details>, замість нього свій + / − */
+      summary::-webkit-details-marker { display: none; }
+      details[open] .faq-plus { display: none; }
+      details:not([open]) .faq-minus { display: none; }
+    </style>
   </head>
 
   <!--
-    bg-gray-100  → сірий фон сторінки
-    min-h-screen → займає всю висоту екрану
-    flex items-center justify-center → центрує картку по середині
-    p-4          → відступи на мобільному
+    bg-white text-ink font-sans → білий фон, темний текст, основний шрифт
+    antialiased                 → згладжування шрифту
   -->
-  <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <body class="bg-white text-ink font-sans antialiased">
 
-    <!-- КАРТКА -->
+    <!-- ШАПКА -->
     <!--
-      bg-white     → білий фон картки
-      rounded-2xl  → заокруглені кути
-      shadow-xl    → велика тінь
-      max-w-sm     → максимальна ширина
-      w-full       → займає всю доступну ширину
-      p-8          → внутрішні відступи
-      text-center  → текст по центру
+      border-b border-line → тонка лінія знизу
+      sticky top-0         → лишається вгорі під час прокрутки
+      bg-white/90 backdrop-blur → напівпрозорий фон з легким розмиттям
     -->
-    <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-8 text-center">
-
-      <!-- АВАТАР -->
-      <!--
-        w-24 h-24       → розмір 96px × 96px
-        rounded-full    → кругла форма
-        mx-auto mb-4    → по центру, відступ знизу
-        object-cover    → зображення заповнює круг
-      -->
-      <img
-        src="https://api.dicebear.com/7.x/adventurer/svg?seed=Karyna"
-        alt="Karyna Opanasiuk"
-        class="w-24 h-24 rounded-full mx-auto mb-4 object-cover bg-[#1b68fa]/10"
-      />
-
-      <!-- ІМ'Я -->
-      <!-- text-2xl font-bold → великий жирний текст -->
-      <h1 class="text-2xl font-bold text-gray-900 mb-1">Karyna Opanasiuk</h1>
-
-      <!-- ПОСАДА -->
-      <!-- text-[#1b68fa] → синій колір (primary з дизайн-системи) -->
-      <p class="text-[#1b68fa] font-medium mb-4">UX/UI Designer</p>
-
-      <!-- РОЗДІЛЮВАЧ -->
-      <hr class="border-gray-200 mb-4" />
-
-      <!-- ОПИС -->
-      <p class="text-gray-500 text-sm leading-relaxed mb-6">
-        Захоплена дизайнер інтерфейсів із фокусом на чистоті, зручності та деталях.
-        Створюю продукти, якими приємно користуватись.
-      </p>
-
-      <!-- НАВИЧКИ — теги -->
-      <!--
-        flex flex-wrap gap-2 justify-center → теги в рядок, переносяться
-        bg-[#1b68fa]/10 text-[#104bc2]     → синій фон і текст
-        rounded-full px-3 py-1 text-xs      → капсульна форма, дрібний текст
-      -->
-      <div class="flex flex-wrap gap-2 justify-center mb-6">
-        <span class="bg-[#1b68fa]/10 text-[#104bc2] rounded-full px-3 py-1 text-xs font-medium">Figma</span>
-        <span class="bg-[#1b68fa]/10 text-[#104bc2] rounded-full px-3 py-1 text-xs font-medium">UI/UX</span>
-        <span class="bg-[#1b68fa]/10 text-[#104bc2] rounded-full px-3 py-1 text-xs font-medium">Prototyping</span>
-        <span class="bg-[#1b68fa]/10 text-[#104bc2] rounded-full px-3 py-1 text-xs font-medium">Design Systems</span>
-        <span class="bg-[#1b68fa]/10 text-[#104bc2] rounded-full px-3 py-1 text-xs font-medium">Tailwind CSS</span>
+    <header class="sticky top-0 z-30 border-b border-line bg-white/90 backdrop-blur">
+      <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+        <a href="#" class="flex items-center gap-2 text-[15px] font-semibold tracking-tight">
+          <span class="inline-block h-2.5 w-2.5 rounded-sm bg-brand"></span>
+          Gorytsia Stay
+        </a>
+        <nav class="hidden items-center gap-8 text-sm text-muted md:flex">
+          <a href="#details" class="hover:text-ink">Про житло</a>
+          <a href="#amenities" class="hover:text-ink">Зручності</a>
+          <a href="#reviews" class="hover:text-ink">Відгуки</a>
+          <a href="#faq" class="hover:text-ink">Правила</a>
+        </nav>
+        <!-- Основна кнопка (primary): синій фон, білий текст, як «Забронювати» в картці -->
+        <a href="#booking" class="rounded-md bg-brand px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-hover active:scale-[0.98]">Забронювати</a>
       </div>
+    </header>
 
-      <!-- КНОПКА -->
+    <main class="mx-auto max-w-6xl px-6">
+
+      <!-- ЗАГОЛОВОК ОГОЛОШЕННЯ -->
+      <!-- pt-10 pb-6 → відступ зверху від шапки і менший проміжок до галереї; font-serif → редакційний заголовок -->
+      <section class="reveal pt-10 pb-6">
+        <p class="mb-4 text-xs font-medium uppercase tracking-[0.12em] text-brand">Буковель · Івано-Франківська область</p>
+        <h1 class="max-w-3xl font-serif text-4xl leading-[1.1] tracking-[-0.02em] md:text-[56px]">
+          Апартаменти з терасою біля озера
+        </h1>
+        <!-- mt-3 → невеликий відступ від заголовка до рядка з рейтингом -->
+        <div class="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted">
+          <span class="flex items-center gap-1.5 text-ink">
+            <svg class="h-4 w-4 text-brand" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9L10 1.5z"/></svg>
+            4,92
+          </span>
+          <a href="#reviews" class="underline decoration-line underline-offset-4 hover:text-ink">38 відгуків</a>
+          <span>2 гості · 1 спальня · 1 ліжко · 1 ванна</span>
+        </div>
+      </section>
+
+      <!-- ГАЛЕРЕЯ -->
       <!--
-        w-full          → розтягується на всю ширину
-        bg-[#1b68fa]     → синій фон
-        hover:bg-[#155be0] → темніший при наведенні
-        text-white      → білий текст
-        font-semibold   → напівжирний
-        py-3 rounded-xl → відступи та заокруглення
-        transition      → плавна анімація
+        grid md:grid-cols-4 md:grid-rows-2 → одне велике фото ліворуч і чотири менші праворуч
+        rounded-xl overflow-hidden         → м'які кути для всієї галереї
       -->
-      <a
-        href="mailto:karynaopanasiuk@gmail.com"
-        class="block w-full bg-[#1b68fa] hover:bg-[#155be0] text-white font-semibold py-3 rounded-xl transition"
-      >
-        Написати мені ✉️
-      </a>
+      <section class="reveal grid gap-2 overflow-hidden rounded-xl md:h-[460px] md:grid-cols-4 md:grid-rows-2" aria-label="Фотографії апартаментів">
+        <img class="h-72 w-full object-cover md:col-span-2 md:row-span-2 md:h-full" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=1200&h=900" alt="Світла вітальня з великими вікнами" />
+        <img class="hidden h-full w-full object-cover md:block" src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&q=80&w=600&h=450" alt="Тераса з двома лежаками і видом на гори" />
+        <img class="hidden h-full w-full object-cover md:block" src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?auto=format&fit=crop&q=80&w=600&h=450" alt="Спальня з двоспальним ліжком" />
+        <img class="hidden h-full w-full object-cover md:block" src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&q=80&w=600&h=450" alt="Біла кухня з барною стійкою" />
+        <img class="hidden h-full w-full object-cover md:block" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600&h=450" alt="Гори, ліс і озеро неподалік" />
+      </section>
 
+      <!-- ОСНОВНИЙ БЛОК: деталі ліворуч, бронювання праворуч -->
+      <!-- lg:grid-cols-[1fr_380px] → гнучка колонка з текстом і фіксована ширина картки бронювання -->
+      <!-- pt-8 pb-16 → менший відступ від галереї, більший перед підвалом -->
+      <div class="grid gap-16 pt-8 pb-16 lg:grid-cols-[1fr_380px] lg:gap-24">
+
+        <div class="min-w-0">
+
+          <!-- ГОСПОДИНЯ -->
+          <section id="details" class="reveal flex items-center justify-between gap-6 border-b border-line pb-10">
+            <div>
+              <h2 class="text-xl font-medium tracking-tight">Житло приймає Оксана</h2>
+              <p class="mt-1 text-sm text-muted">Приймає гостей 6 років · відповідає протягом години</p>
+            </div>
+            <img class="h-14 w-14 shrink-0 rounded-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=160&h=160&crop=faces" alt="Оксана, господиня" />
+          </section>
+
+          <!-- ГОЛОВНЕ ПРО ЖИТЛО -->
+          <!-- space-y-7 → рівні відступи між пунктами; заповнені (filled) іконки в світло-блакитних кружечках (bg-brand-soft, rounded-full) -->
+          <section class="reveal space-y-7 border-b border-line py-10">
+            <div class="flex items-start gap-5">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-soft"><svg class="h-5 w-5 text-brand" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 20L8.2 8.9c.4-.7 1.2-.7 1.6 0l3.6 6.2 1.8-2.7c.4-.6 1.2-.6 1.6 0L22 20H2z"/><circle cx="17.5" cy="5.5" r="2.25"/></svg></span>
+              <div>
+                <h3 class="font-medium">10 хвилин пішки до підйомника №7</h3>
+                <p class="mt-1 text-sm leading-relaxed text-muted">Взимку — траси, влітку — стежки до озера і вершини Буковель.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-5">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-soft"><svg class="h-5 w-5 text-brand" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.5h10a2 2 0 012 2v17H5v-17a2 2 0 012-2zm8 8.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/></svg></span>
+              <div>
+                <h3 class="font-medium">Самостійне заселення</h3>
+                <p class="mt-1 text-sm leading-relaxed text-muted">Кодовий замок: заселяйтесь після 15:00 без очікування.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-5">
+              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-soft"><svg class="h-5 w-5 text-brand" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.3 3.3a1.1 1.1 0 011.4 0l8 6.4a1 1 0 01.3.8V20a1 1 0 01-1 1h-5v-5.5a1 1 0 00-1-1h-4a1 1 0 00-1 1V21H4a1 1 0 01-1-1v-9.5a1 1 0 01.4-.8l7.9-6.4z"/></svg></span>
+              <div>
+                <h3 class="font-medium">Тераса з видом на гори</h3>
+                <p class="mt-1 text-sm leading-relaxed text-muted">12 м² зі столиком і кріслами — ранкова кава з видом на Говерлянський хребет.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ОПИС -->
+          <!-- max-w-prose leading-[1.7] → комфортна довжина рядка і міжрядковий інтервал -->
+          <section class="reveal max-w-prose border-b border-line py-10 text-[15px] leading-[1.7] text-ink/90">
+            <p>
+              Світлі апартаменти на третьому поверсі тихого будинку біля озера. Велике вікно у вітальні виходить на
+              гори, а вечорами тут видно вогні курорту. Спальня відокремлена від вітальні, тож двом людям зручно,
+              навіть якщо один прокидається раніше.
+            </p>
+            <p class="mt-4">
+              На кухні є все для сніданків і вечері: індукційна плита, духовка, кавоварка. Лижі та борди можна
+              залишити в сушарці на першому поверсі.
+            </p>
+          </section>
+
+          <!-- ЗРУЧНОСТІ -->
+          <!-- grid sm:grid-cols-2 → два стовпчики на широких екранах -->
+          <section id="amenities" class="reveal border-b border-line py-10">
+            <h2 class="text-xl font-medium tracking-tight">Що є в апартаментах</h2>
+            <ul class="mt-6 grid gap-x-10 gap-y-4 text-[15px] sm:grid-cols-2">
+              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Wi-Fi 300 Мбіт/с</li>
+              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Робоче місце з монітором</li>
+              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Кухня з посудомийкою</li>
+              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Пральна машина</li>
+              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Безкоштовна парковка</li>
+              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Сушарка для лиж і взуття</li>
+              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Тераса з меблями</li>
+              <li class="flex items-center gap-3"><span class="h-1.5 w-1.5 rounded-full bg-brand"></span>Генератор на випадок відключень</li>
+            </ul>
+          </section>
+
+          <!-- ВІДГУКИ -->
+          <section id="reviews" class="reveal border-b border-line py-10">
+            <div class="flex items-baseline gap-3">
+              <h2 class="font-serif text-4xl tracking-[-0.02em]">4,92</h2>
+              <p class="text-sm text-muted">середня оцінка · 38 відгуків</p>
+            </div>
+
+            <!-- Оцінки за категоріями: тонкі смужки прогресу в основному кольорі -->
+            <dl class="mt-8 grid gap-x-10 gap-y-4 text-sm sm:grid-cols-2">
+              <div class="flex items-center justify-between gap-4"><dt class="text-muted">Чистота</dt><dd class="flex items-center gap-3"><span class="h-1 w-24 rounded bg-line"><span class="block h-1 w-[98%] rounded bg-brand"></span></span>4,9</dd></div>
+              <div class="flex items-center justify-between gap-4"><dt class="text-muted">Розташування</dt><dd class="flex items-center gap-3"><span class="h-1 w-24 rounded bg-line"><span class="block h-1 w-full rounded bg-brand"></span></span>5,0</dd></div>
+              <div class="flex items-center justify-between gap-4"><dt class="text-muted">Заселення</dt><dd class="flex items-center gap-3"><span class="h-1 w-24 rounded bg-line"><span class="block h-1 w-[96%] rounded bg-brand"></span></span>4,8</dd></div>
+              <div class="flex items-center justify-between gap-4"><dt class="text-muted">Ціна та якість</dt><dd class="flex items-center gap-3"><span class="h-1 w-24 rounded bg-line"><span class="block h-1 w-[94%] rounded bg-brand"></span></span>4,7</dd></div>
+            </dl>
+
+            <div class="mt-10 grid gap-10 sm:grid-cols-2">
+              <figure>
+                <blockquote class="text-[15px] leading-[1.7]">«Прокидалися від світла з вікна, пили каву на терасі й пішки йшли на підйомник. У квартирі тепло і тихо.»</blockquote>
+                <figcaption class="mt-3 text-sm text-muted">Марта · Львів · вересень 2026</figcaption>
+              </figure>
+              <figure>
+                <blockquote class="text-[15px] leading-[1.7]">«Оксана відповідала за кілька хвилин, заселення без проблем. Для роботи зручний стіл з монітором.»</blockquote>
+                <figcaption class="mt-3 text-sm text-muted">Андрій · Київ · серпень 2026</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <!-- ПРАВИЛА (акордеон без рамок, лише роздільники) -->
+          <section id="faq" class="reveal py-10">
+            <h2 class="text-xl font-medium tracking-tight">Що варто знати</h2>
+            <div class="mt-4">
+              <details class="border-b border-line py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between text-[15px] font-medium">
+                  Правила будинку
+                  <span class="faq-plus text-xl font-light text-brand">+</span><span class="faq-minus text-xl font-light text-brand">−</span>
+                </summary>
+                <p class="mt-3 max-w-prose text-sm leading-relaxed text-muted">Заселення після 15:00, виселення до 11:00. Не курити в квартирі, тихі години з 23:00 до 8:00. Можна з невеликою твариною за попереднім погодженням.</p>
+              </details>
+              <details class="border-b border-line py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between text-[15px] font-medium">
+                  Скасування бронювання
+                  <span class="faq-plus text-xl font-light text-brand">+</span><span class="faq-minus text-xl font-light text-brand">−</span>
+                </summary>
+                <p class="mt-3 max-w-prose text-sm leading-relaxed text-muted">Безкоштовне скасування до 7 днів перед заїздом. Пізніше повертаємо 50% вартості проживання.</p>
+              </details>
+              <details class="border-b border-line py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between text-[15px] font-medium">
+                  Як дістатися
+                  <span class="faq-plus text-xl font-light text-brand">+</span><span class="faq-minus text-xl font-light text-brand">−</span>
+                </summary>
+                <p class="mt-3 max-w-prose text-sm leading-relaxed text-muted">Від залізничної станції Яремче — 35 хвилин на таксі або трансфері. Точну адресу надішлемо після підтвердження бронювання.</p>
+              </details>
+            </div>
+          </section>
+        </div>
+
+        <!-- КАРТКА БРОНЮВАННЯ -->
+        <!--
+          lg:sticky lg:top-24 → на широкому екрані «їде» разом з прокруткою
+          rounded-xl border border-line → тонка рамка без важких тіней
+          p-8                 → багато внутрішнього простору
+        -->
+        <aside id="booking" class="scroll-mt-24 lg:sticky lg:top-24 lg:self-start">
+          <form id="booking-form" class="reveal rounded-xl border border-line bg-white p-8 shadow-[0_2px_8px_rgba(0,0,0,0.03)]" novalidate>
+            <p class="flex items-baseline gap-1.5">
+              <span class="font-serif text-3xl tracking-[-0.02em]">3 200 ₴</span>
+              <span class="text-sm text-muted">за ніч</span>
+            </p>
+
+            <!-- Дати заїзду та виїзду: дві половини однієї рамки -->
+            <div class="mt-6 grid grid-cols-2 overflow-hidden rounded-lg border border-line">
+              <label class="block border-r border-line px-4 py-3 focus-within:bg-brand-soft">
+                <span class="block text-[11px] font-medium uppercase tracking-[0.08em] text-muted">Заїзд</span>
+                <input id="check-in" type="date" value="2026-10-15" class="mt-1 w-full bg-transparent text-sm outline-none" required />
+              </label>
+              <label class="block px-4 py-3 focus-within:bg-brand-soft">
+                <span class="block text-[11px] font-medium uppercase tracking-[0.08em] text-muted">Виїзд</span>
+                <input id="check-out" type="date" value="2026-10-19" class="mt-1 w-full bg-transparent text-sm outline-none" required />
+              </label>
+            </div>
+
+            <!-- Кількість гостей: кнопки − / + -->
+            <div class="mt-3 flex items-center justify-between rounded-lg border border-line px-4 py-3">
+              <div>
+                <span class="block text-[11px] font-medium uppercase tracking-[0.08em] text-muted">Гості</span>
+                <span class="mt-1 block text-sm"><span id="guests">2</span> <span id="guests-word">гості</span></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="guests-minus" class="grid h-8 w-8 place-items-center rounded-md border border-line text-lg leading-none text-ink hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-40" aria-label="Менше гостей">−</button>
+                <button type="button" id="guests-plus" class="grid h-8 w-8 place-items-center rounded-md border border-line text-lg leading-none text-ink hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-40" aria-label="Більше гостей">+</button>
+              </div>
+            </div>
+
+            <p id="date-error" class="mt-3 hidden text-sm text-brand" role="alert">Дата виїзду має бути пізніше за дату заїзду.</p>
+
+            <!-- Основна кнопка: єдиний великий елемент в основному кольорі -->
+            <button type="submit" class="mt-6 w-full rounded-md bg-brand py-3.5 text-[15px] font-medium text-white transition hover:bg-brand-hover active:scale-[0.98]">
+              Забронювати
+            </button>
+            <p class="mt-3 text-center text-xs text-muted">Поки що нічого не списуємо</p>
+
+            <!-- Розрахунок вартості (оновлюється при зміні дат) -->
+            <dl class="mt-6 space-y-3 text-sm">
+              <div class="flex justify-between"><dt class="text-muted">3 200 ₴ × <span id="nights">4</span> <span id="nights-word">ночі</span></dt><dd id="stay-total">12 800 ₴</dd></div>
+              <div class="flex justify-between"><dt class="text-muted">Прибирання</dt><dd>600 ₴</dd></div>
+              <div class="flex justify-between border-t border-line pt-4 font-medium"><dt>Разом</dt><dd id="grand-total">13 400 ₴</dd></div>
+            </dl>
+
+            <!-- Повідомлення після надсилання (без реальної оплати) -->
+            <div id="booking-done" class="mt-6 hidden rounded-lg bg-brand-soft p-4 text-sm text-ink" role="status">
+              Запит надіслано. Оксана підтвердить бронювання протягом години.
+            </div>
+          </form>
+        </aside>
+      </div>
+    </main>
+
+    <!-- НИЖНЯ ПАНЕЛЬ НА ТЕЛЕФОНІ -->
+    <!--
+      fixed inset-x-0 bottom-0 → закріплена внизу екрана
+      lg:hidden                → на широких екранах її нема, там картка бронювання поруч з текстом
+    -->
+    <div class="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between border-t border-line bg-white/95 px-6 py-3 backdrop-blur lg:hidden">
+      <p class="flex items-baseline gap-1.5">
+        <span class="font-serif text-xl tracking-[-0.02em]">3 200 ₴</span>
+        <span class="text-sm text-muted">за ніч</span>
+      </p>
+      <a href="#booking" class="rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-hover active:scale-[0.98]">Забронювати</a>
     </div>
-    <!-- КІНЕЦЬ КАРТКИ -->
 
+    <!-- ПІДВАЛ -->
+    <!-- pb-24 lg:pb-0 → на телефоні відступ знизу, щоб нижня панель не закривала текст -->
+    <footer class="border-t border-line bg-canvas pb-24 lg:pb-0">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-10 text-sm text-muted sm:flex-row sm:justify-between">
+        <p>Gorytsia Stay · Буковель</p>
+      </div>
+    </footer>
+
+    <script>
+      // Розрахунок ночей і вартості, кількість гостей, повідомлення після бронювання
+      const PRICE = 3200;
+      const CLEANING = 600;
+      const MAX_GUESTS = 2;
+      const money = (n) => n.toLocaleString("uk-UA").replace(/ | /g, " ") + " ₴";
+      const plural = (n, one, few, many) => {
+        const m10 = n % 10, m100 = n % 100;
+        if (m10 === 1 && m100 !== 11) return one;
+        if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
+        return many;
+      };
+
+      const checkIn = document.getElementById("check-in");
+      const checkOut = document.getElementById("check-out");
+      const dateError = document.getElementById("date-error");
+      let guests = 2;
+
+      function updateTotals() {
+        const nights = Math.round((new Date(checkOut.value) - new Date(checkIn.value)) / 86400000);
+        const valid = Number.isFinite(nights) && nights > 0;
+        dateError.classList.toggle("hidden", valid);
+        const n = valid ? nights : 0;
+        document.getElementById("nights").textContent = n;
+        document.getElementById("nights-word").textContent = plural(n, "ніч", "ночі", "ночей");
+        document.getElementById("stay-total").textContent = money(n * PRICE);
+        document.getElementById("grand-total").textContent = money(valid ? n * PRICE + CLEANING : 0);
+        return valid;
+      }
+
+      function updateGuests() {
+        document.getElementById("guests").textContent = guests;
+        document.getElementById("guests-word").textContent = plural(guests, "гість", "гості", "гостей");
+        document.getElementById("guests-minus").disabled = guests <= 1;
+        document.getElementById("guests-plus").disabled = guests >= MAX_GUESTS;
+      }
+
+      checkIn.addEventListener("change", () => {
+        checkOut.min = checkIn.value;
+        updateTotals();
+      });
+      checkOut.addEventListener("change", updateTotals);
+      document.getElementById("guests-minus").addEventListener("click", () => { guests--; updateGuests(); });
+      document.getElementById("guests-plus").addEventListener("click", () => { guests++; updateGuests(); });
+      document.getElementById("booking-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (updateTotals()) document.getElementById("booking-done").classList.remove("hidden");
+      });
+
+      // Плавна поява блоків при прокрутці
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
+      }, { threshold: 0.1 });
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+      checkOut.min = checkIn.value;
+      updateTotals();
+      updateGuests();
+    </script>
   </body>
 </html>
