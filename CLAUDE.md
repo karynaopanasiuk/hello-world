@@ -1,7 +1,7 @@
 # karyna-design-engineer
 
-Portfolio repo of Karyna Opanasiuk (UX/UI designer): a static Tailwind card page
-(`index.html`) plus a small React/TypeScript component library documented in Storybook,
+Portfolio repo of Karyna Opanasiuk (UX/UI designer): a static Tailwind apartment booking page
+(`index.html`, a study mock-up) plus a small React/TypeScript component library documented in Storybook,
 with design tokens synced from a Figma design system ("Published! Design System").
 
 ## Tech stack
@@ -22,7 +22,7 @@ with design tokens synced from a Figma design system ("Published! Design System"
 
 ## File structure
 ```
-index.html                      static card page (Ukrainian comments)
+index.html                      static apartment booking page (Ukrainian comments)
 src/components/                 Button, Field, Notification: .tsx + .stories.tsx + .mdx
 src/assets/notification/        SVG icons exported from Figma
 src/styles/                     GENERATED: tokens.css, tokens.modes.css, tokens.theme.css
@@ -43,7 +43,7 @@ scripts/figma-to-tokens.mjs     Figma -> tokens.json (through the figmosha bridg
   (no `` `bg-${color}-600` ``) so the scanner sees them. Arbitrary values are fine.
 - **Palette:** blue, from the Figma design system: `#1b68fa` primary, `#155be0` hover,
   `#104bc2` active, `#1b68fa` at 10% for light fills (`tokens.json` `color.primary.*`). Used in
-  `Button`, `Notification` and the card page as arbitrary values until the token CSS is wired in.
+  `Button`, `Notification` and the booking page (`brand` in its inline Tailwind config) as arbitrary values until the token CSS is wired in.
 - **Comments:** `index.html` keeps Ukrainian comments explaining the Tailwind classes;
   README and `.tsx` comments are English.
 - **Tokens are generated.** Never edit `tokens.json` or `src/styles/*` by hand: change the
@@ -78,4 +78,5 @@ scripts/figma-to-tokens.mjs     Figma -> tokens.json (through the figmosha bridg
 - Inter Variable (the Figma font) is not loaded, so Storybook falls back to a system font.
 - `Notification` implements the Type x Size set only; the Figma set with `Style` (Light/White)
   and the `Grey` type is not built.
-- `index.html` is still the static page; the portfolio migration to React has not started.
+- `index.html` is a static page (Tailwind CDN), not built from the React components; the
+  portfolio-migration team in `.claude/teams/` still describes the old card page.
